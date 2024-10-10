@@ -8,8 +8,8 @@ config();
 import { AdminService } from './admin/admin.service';
 import { UserService } from './user/user.service';
 
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const CITY = process.env.CITY;
+const TELEGRAM_BOT_TOKEN = '8171646977:AAEXoDfkZ0YA4qxe4FqH5cXQxZEtYLuX8gs';
+const CITY = 'JAIPUR';
 
 interface WeatherResponse {
   weather: {

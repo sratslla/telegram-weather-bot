@@ -18,8 +18,8 @@ const dotenv_1 = require("dotenv");
 (0, dotenv_1.config)();
 const admin_service_1 = require("./admin/admin.service");
 const user_service_1 = require("./user/user.service");
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const CITY = process.env.CITY;
+const TELEGRAM_BOT_TOKEN = '8171646977:AAEXoDfkZ0YA4qxe4FqH5cXQxZEtYLuX8gs';
+const CITY = 'JAIPUR';
 let TelegramBotService = class TelegramBotService {
     constructor(adminService, userService) {
         this.adminService = adminService;

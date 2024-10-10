@@ -6,7 +6,7 @@ dotenv.config();
 
 @Injectable()
 export class AdminService {
-  private apiKey = process.env.TELEGRAM_BOT_TOKEN;
+  private apiKey = '8171646977:AAEXoDfkZ0YA4qxe4FqH5cXQxZEtYLuX8gs';
   private users: string[] = [];
 
   getApiKey(): string {

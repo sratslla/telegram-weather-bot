@@ -17,7 +17,9 @@ let DatabaseModule = class DatabaseModule {
 exports.DatabaseModule = DatabaseModule;
 exports.DatabaseModule = DatabaseModule = __decorate([
     (0, common_1.Module)({
-        imports: [mongoose_1.MongooseModule.forRoot(process.env.MONGODB_URI)],
+        imports: [
+            mongoose_1.MongooseModule.forRoot('mongodb+srv://allstars:GsaUjSNg5AmivqEe@cluster0.hjmgq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'),
+        ],
         providers: [...database_provider_1.databaseProviders],
         exports: [mongoose_1.MongooseModule],
     })

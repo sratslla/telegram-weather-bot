@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AdminService = void 0;
 const common_1 = require("@nestjs/common");
-const dotenv_1 = require("dotenv");
-(0, dotenv_1.config)();
+const dotenv = require("dotenv");
+dotenv.config();
 let AdminService = class AdminService {
     constructor() {
-        this.apiKey = process.env.TELEGRAM_BOT_TOKEN;
+        this.apiKey = '8171646977:AAEXoDfkZ0YA4qxe4FqH5cXQxZEtYLuX8gs';
         this.users = [];
     }
     getApiKey() {
