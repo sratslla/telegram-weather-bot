@@ -1,0 +1,13 @@
+.main-div {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.table-data {
+	padding-top: 80px;
+	justify-content: center;
+	align-items: center;
+}
