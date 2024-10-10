@@ -1,8 +1,8 @@
 // admin.service.ts
 
 import { Injectable } from '@nestjs/common';
-import { config } from 'dotenv';
-config();
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 @Injectable()
 export class AdminService {
