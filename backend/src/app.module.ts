@@ -19,7 +19,7 @@ config();
     MongooseModule.forRootAsync({
       useFactory: () =>
         ({
-          uri: 'mongodb+srv://allstars:GsaUjSNg5AmivqEe@cluster0.hjmgq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
+          uri: process.env.MONGODB_URI,
         }) as MongooseModuleFactoryOptions,
     }),
   ],

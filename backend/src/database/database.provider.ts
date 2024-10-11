@@ -9,8 +9,7 @@ export const databaseProviders: Provider[] = [
     provide: 'DATABASE_CONNECTION',
     useFactory: async (): Promise<typeof mongoose> => {
       try {
-        const uri =
-          'mongodb+srv://allstars:GsaUjSNg5AmivqEe@cluster0.hjmgq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+        const uri = process.env.MONGODB_URI;
 
         const connection = await mongoose.connect(uri);
 

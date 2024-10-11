@@ -5,11 +5,7 @@ import { config } from 'dotenv';
 config();
 
 @Module({
-  imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://allstars:GsaUjSNg5AmivqEe@cluster0.hjmgq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
-    ),
-  ],
+  imports: [MongooseModule.forRoot(process.env.MONGODB_URI)],
   providers: [...databaseProviders],
   exports: [MongooseModule],
 })

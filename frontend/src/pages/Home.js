@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { auth, provider } from "./Config";
 import { signInWithPopup } from "firebase/auth";
 import Main from "./Main";
+import GoogleButton from "react-google-button";
 
 const Home = () => {
 	// const navigate = useNavigate();
@@ -20,12 +21,15 @@ const Home = () => {
 	}, []);
 
 	return (
-		<div>
-			{value ? (
-				<Main />
-			) : (
-				<button onClick={handleLogin}>Sign Up with Google</button>
-			)}
+		<div
+			style={{
+				display: "flex",
+				justifyContent: "center",
+				alignItems: "center",
+				height: "100vh",
+			}}
+		>
+			{value ? <Main /> : <GoogleButton onClick={handleLogin} />}
 		</div>
 	);
 };
