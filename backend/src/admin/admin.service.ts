@@ -6,7 +6,7 @@ dotenv.config();
 
 @Injectable()
 export class AdminService {
-  private apiKey = '8171646977:AAEXoDfkZ0YA4qxe4FqH5cXQxZEtYLuX8gs';
+  private apiKey = '7897059351:AAH_dW5uAU5Sb7wJWOIwn16qtEmzoML0Xbg';
   private users: string[] = [];
 
   getApiKey(): string {
