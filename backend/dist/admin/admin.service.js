@@ -12,7 +12,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 let AdminService = class AdminService {
     constructor() {
-        this.apiKey = '7897059351:AAH_dW5uAU5Sb7wJWOIwn16qtEmzoML0Xbg';
+        this.apiKey = '7352824023:AAGRx2Q6_IUD1EW-em01QC7lktSxVOdt5P8';
         this.users = [];
     }
     getApiKey() {

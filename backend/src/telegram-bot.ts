@@ -8,7 +8,7 @@ config();
 import { AdminService } from './admin/admin.service';
 import { UserService } from './user/user.service';
 
-const TELEGRAM_BOT_TOKEN = '7897059351:AAH_dW5uAU5Sb7wJWOIwn16qtEmzoML0Xbg';
+const TELEGRAM_BOT_TOKEN = '7352824023:AAGRx2Q6_IUD1EW-em01QC7lktSxVOdt5P8';
 const CITY = 'JAIPUR';
 
 interface WeatherResponse {
