@@ -4,6 +4,7 @@ import "./Table.css";
 import axios from "axios";
 
 const backendURL = process.env.REACT_APP_BACKEND_URL;
+console.log(backendURL);
 
 const TableDate = ({
 	ChatId,
