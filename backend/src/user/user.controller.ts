@@ -31,10 +31,11 @@ export class UserController {
         ? 'User Unblocked successfully'
         : 'User Blocked successfully';
 
-      if (blockedUser && blockedUser.blocked) {
-        this.telegramBotService.removeSubscribedUser(chatId);
-      } else if (blockedUser && !blockedUser.blocked) {
-        this.telegramBotService.addSubscribedUser(chatId);
+      // Update subscription based on blocked status
+      if (blockedUser.blocked) {
+        this.telegramBotService.removeSubscribedUser(chatId); // Blocked users are unsubscribed
+      } else {
+        this.telegramBotService.addSubscribedUser(chatId); // Unblocked users are resubscribed
       }
 
       return { message };

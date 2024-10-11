@@ -28,16 +28,19 @@ let UserController = class UserController {
         const user = await this.userService.getUserByChatId(chatId);
         if (user) {
             const blockedUser = await this.userService.blockUser(chatId, !user.blocked);
-            const message = user.blocked
-                ? 'User Unblocked successfully'
-                : 'User Blocked successfully';
-            if (blockedUser && blockedUser.blocked) {
+            const message = blockedUser.blocked
+                ? 'User Blocked successfully'
+                : 'User Unblocked successfully';
+            if (blockedUser.blocked) {
                 this.telegramBotService.removeSubscribedUser(chatId);
             }
-            else if (blockedUser && !blockedUser.blocked) {
+            else {
                 this.telegramBotService.addSubscribedUser(chatId);
             }
             return { message };
+        }
+        else {
+            return { message: 'User not found.' };
         }
     }
     async deleteUser(chatId) {
