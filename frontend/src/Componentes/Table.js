@@ -4,7 +4,6 @@ import "./Table.css";
 import axios from "axios";
 
 const backendURL = process.env.REACT_APP_BACKEND_URL;
-console.log(backendURL);
 
 const TableDate = ({
 	ChatId,
@@ -15,6 +14,7 @@ const TableDate = ({
 	onBlockToggle,
 }) => {
 	const blockUser = (UserName, ChatId) => {
+		console.log(backendURL);
 		axios.post(`${backendURL}/users/block/${ChatId}`).then((response) => {
 			console.log(response.data);
 		});
