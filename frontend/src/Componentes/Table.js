@@ -14,7 +14,6 @@ const TableDate = ({
 	onBlockToggle,
 }) => {
 	const blockUser = (UserName, ChatId) => {
-		console.log(backendURL);
 		axios.post(`${backendURL}/users/block/${ChatId}`).then((response) => {
 			console.log(response.data);
 		});
@@ -52,13 +51,8 @@ const Table = () => {
 	}, []);
 	const getUsers = async () => {
 		try {
-			const response = await axios.get(`${backendURL}/users`); // API call
-			if (Array.isArray(response.data)) {
-				setUsers(response.data); // Update users if response is an array
-			} else {
-				console.error("Expected an array but got:", response.data);
-				setUsers([]); // Handle non-array responses
-			}
+			const response = await axios.get(`${backendURL}/users`); // Wait for the API response
+			setUsers(response.data); // Update the state once response is received
 		} catch (error) {
 			console.error("Error fetching Users", error);
 		}
@@ -94,34 +88,25 @@ const Table = () => {
 				<th>SubscriptionStatus</th>
 				<th>Blocked</th>
 			</tr>
-			{Array.isArray(users) && users.length > 0 ? (
-				users.map(
-					({
-						chatId,
-						username,
-						createdAt,
-						subscriptionstatus,
-						blocked,
-					}) => (
-						<TableDate
-							key={chatId} // Add a unique key for each row
-							ChatId={chatId}
-							UserName={username}
-							Joined={new Date(createdAt).toLocaleDateString()} // Format date
-							SubscriptionStatus={
-								subscriptionstatus
-									? "Subscribed"
-									: "Not Subscribed"
-							}
-							Blocked={blocked}
-							onBlockToggle={onBlockToggle}
-						/>
-					)
+			{users.map(
+				({
+					chatId,
+					username,
+					createdAt,
+					subscriptionstatus,
+					blocked,
+				}) => (
+					<TableDate
+						ChatId={chatId}
+						UserName={username}
+						Joined={createdAt}
+						SubscriptionStatus={
+							subscriptionstatus ? "Subscribed" : "Not Subscribed"
+						}
+						Blocked={blocked}
+						onBlockToggle={onBlockToggle}
+					/>
 				)
-			) : (
-				<tr>
-					<td colSpan="4">No users found</td>
-				</tr>
 			)}
 		</table>
 	);
