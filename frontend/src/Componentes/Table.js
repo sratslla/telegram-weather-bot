@@ -51,8 +51,13 @@ const Table = () => {
 	}, []);
 	const getUsers = async () => {
 		try {
-			const response = await axios.get(`${backendURL}/users`); // Wait for the API response
-			setUsers(response.data); // Update the state once response is received
+			const response = await axios.get(`${backendURL}/users`);
+			if (Array.isArray(response.data)) {
+				setUsers(response.data);
+			} else {
+				console.error("Expected an array but got:", response.data);
+				setUsers([]);
+			}
 		} catch (error) {
 			console.error("Error fetching Users", error);
 		}
@@ -61,7 +66,7 @@ const Table = () => {
 		setUsers((prevUsers) =>
 			prevUsers.map((user) =>
 				user.chatId === chatId
-					? { ...user, blocked: !user.blocked } // Toggle blocked status
+					? { ...user, blocked: !user.blocked }
 					: user
 			)
 		);
@@ -88,25 +93,34 @@ const Table = () => {
 				<th>SubscriptionStatus</th>
 				<th>Blocked</th>
 			</tr>
-			{users.map(
-				({
-					chatId,
-					username,
-					createdAt,
-					subscriptionstatus,
-					blocked,
-				}) => (
-					<TableDate
-						ChatId={chatId}
-						UserName={username}
-						Joined={createdAt}
-						SubscriptionStatus={
-							subscriptionstatus ? "Subscribed" : "Not Subscribed"
-						}
-						Blocked={blocked}
-						onBlockToggle={onBlockToggle}
-					/>
+			{Array.isArray(users) && users.length > 0 ? (
+				users.map(
+					({
+						chatId,
+						username,
+						createdAt,
+						subscriptionstatus,
+						blocked,
+					}) => (
+						<TableDate
+							key={chatId}
+							ChatId={chatId}
+							UserName={username}
+							Joined={new Date(createdAt).toLocaleDateString()} // Format date
+							SubscriptionStatus={
+								subscriptionstatus
+									? "Subscribed"
+									: "Not Subscribed"
+							}
+							Blocked={blocked}
+							onBlockToggle={onBlockToggle}
+						/>
+					)
 				)
+			) : (
+				<tr>
+					<td colSpan="4">No users found</td>
+				</tr>
 			)}
 		</table>
 	);
